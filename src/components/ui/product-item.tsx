@@ -30,10 +30,33 @@ const ProductItem = ({ product }: ProductItemProps) => {
         <div className="flex items-center gap-2">
           {product.discountPercent > 0 ? (
             <>
-              <span className="font-semibold">R$ { Number(product.totalPrice)}</span>
-              <span className="opacity-75 line-through text-xs">R$ {Number(product.basePrice)}</span>
+              <span className="font-semibold">
+                { 
+                  Intl.NumberFormat('pt-BR', { 
+                    style: 'currency', 
+                    currency: 'BRL' 
+                  }).format(Number(product.totalPrice))
+                }
+              </span>
+              <span className="opacity-75 line-through text-xs">
+                {
+                  Intl.NumberFormat('pt-BR', { 
+                    style: 'currency', 
+                    currency: 'BRL' 
+                  }).format(Number(product.basePrice))
+                }
+              </span>
             </>
-          ) : (<span className="font-semibold">R$ { Number(product.basePrice)}</span>)}
+          ) : (
+            <span className="font-semibold">
+              {
+                Intl.NumberFormat('pt-BR', { 
+                  style: 'currency', 
+                  currency: 'BRL' 
+                }).format(Number(product.basePrice))
+              }
+            </span>
+          )}
 
         </div>
       </div>
